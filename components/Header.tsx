@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Container from "@/atoms/Container";
 
 type NavLink = {
@@ -12,21 +15,29 @@ type NavLinks = NavLink[];
 
 const HeaderLinks: NavLinks = [
   {
+    route: "/",
+    text: "LoadBoard",
+  },
+  {
     route: "/users",
     text: "Users",
   },
   {
-    route: "/loadboard",
-    text: "LoadBoard",
+    route: "/history",
+    text: "History",
   },
 ];
 
 function Header() {
+  const pathname = usePathname();
+
   const renderHeaderLinks: React.JSX.Element[] = HeaderLinks.map(
     (link, idx) => (
       <li key={`${link}-${idx}`}>
         <Link
-          className="cursor-pointer hover:underline hover:underline-offset-4"
+          className={`cursor-pointer hover:underline hover:underline-offset-4${
+            pathname === link.route ? " underline underline-offset-4" : ""
+          }`}
           href={link.route}
         >
           {link.text}
