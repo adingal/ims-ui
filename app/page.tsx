@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "@/components/Header";
 import LoadBoardTable from "@/components/LoadBoardTable";
+import MainContainer from "@/atoms/MainContainer";
 import Container from "@/atoms/Container";
 import PageTitle from "@/atoms/PageTitle";
 
@@ -17,12 +18,12 @@ function Home() {
   return (
     <>
       <Header />
-      <main className="py-6 md:py-8 lg:py-10">
+      <MainContainer>
         <Container>
           <PageTitle title="LoadBoard" imgSource="/loadboard-icon.svg" />
           <LoadBoardTable />
         </Container>
-      </main>
+      </MainContainer>
     </>
   );
 }
